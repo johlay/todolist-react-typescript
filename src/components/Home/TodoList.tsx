@@ -1,10 +1,9 @@
-import * as React from "react";
+import React from "react";
 import { default as dayjs } from "dayjs";
 import { List, Grid, Typography } from "@material-ui/core";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import TodoItem from "./TodoItem";
-
 const useStyles = makeStyles(() =>
   createStyles({
     todoListContainer: {

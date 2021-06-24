@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import TodoContextProvider from "./contexts/TodoContext";
+import TodoContext from "./contexts/TodoContext";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -8,7 +8,7 @@ import Create from "./pages/Create";
 function App() {
   return (
     <div className="App">
-      <TodoContextProvider>
+      <TodoContext>
         <BrowserRouter>
           <Navbar />
           <Switch>
@@ -17,7 +17,7 @@ function App() {
             <Route exact path="/create" component={Create} />
           </Switch>
         </BrowserRouter>
-      </TodoContextProvider>
+      </TodoContext>
     </div>
   );
 }
