@@ -10,6 +10,12 @@ import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 
+interface Props {
+  todo: TodoType;
+}
+
+type TodoType = { title: string; when: string };
+
 const useStyles = makeStyles(() =>
   createStyles({
     todoItem: {
@@ -23,7 +29,7 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const TodoItem: React.FunctionComponent = () => {
+const TodoItem: React.FunctionComponent<Props> = ({ todo }) => {
   /* Material-ui - classes */
   const classes = useStyles();
 
@@ -31,10 +37,7 @@ const TodoItem: React.FunctionComponent = () => {
     <>
       <ListItem dense className={classes.todoItem}>
         <Checkbox color="primary" />
-        <ListItemText
-          primary="Daily meeting with teams"
-          secondary={`When: today at 2.30 am`}
-        ></ListItemText>
+        <ListItemText primary={todo.title} secondary={todo.when}></ListItemText>
 
         <ListItemSecondaryAction>
           <IconButton>

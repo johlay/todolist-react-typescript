@@ -75,7 +75,10 @@ const TodoList: React.FunctionComponent = () => {
       {/* /.todoListHeader */}
       <Grid container item className={classes.todoListContent}>
         <List className={classes.todoList}>
-          <TodoItem />
+          {todos &&
+            todos.map((todo) => {
+              return <TodoItem todo={todo} />;
+            })}
         </List>
       </Grid>
     </Grid>
