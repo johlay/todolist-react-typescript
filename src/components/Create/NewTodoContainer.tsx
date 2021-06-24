@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core";
 import NewTodoHeader from "./NewTodoHeader";
+import NewTodoForm from "./NewTodoForm";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -24,6 +25,7 @@ const NewTodoContainer: React.FunctionComponent = () => {
   return (
     <Grid container className={classes.todoContainer}>
       <NewTodoHeader />
+      <NewTodoForm />
     </Grid>
   );
 };
