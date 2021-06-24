@@ -1,11 +1,12 @@
 import * as React from "react";
+import { Grid } from "@material-ui/core";
 import TodoList from "../components/Home/TodoList";
 
 const Home: React.FunctionComponent = () => {
   return (
-    <div>
+    <Grid container>
       <TodoList />
-    </div>
+    </Grid>
   );
 };
 

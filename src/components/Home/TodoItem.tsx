@@ -23,7 +23,7 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const TodoItem = () => {
+const TodoItem: React.FunctionComponent = () => {
   /* Material-ui - classes */
   const classes = useStyles();
 
