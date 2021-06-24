@@ -4,16 +4,14 @@ interface Props {
   children: ReactNode;
 }
 
-interface IContext {
+interface Context {
   todos: Todos[] | null;
   setTodos: (todos: Todos[]) => void;
 }
 
 type Todos = { title: string; when: string };
 
-type ContextValue = IContext | null;
-
-export const TodoContext = createContext<ContextValue>(null);
+export const TodoContext = createContext<Context>({} as Context);
 
 const TodoContextProvider = ({ children }: Props) => {
   const [todos, setTodos] = useState<Todos[] | null>([
@@ -22,7 +20,8 @@ const TodoContextProvider = ({ children }: Props) => {
   ]);
 
   /* Props */
-  const values: IContext = { todos, setTodos };
+  const values: Context = { todos, setTodos };
+
   return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>;
 };
 

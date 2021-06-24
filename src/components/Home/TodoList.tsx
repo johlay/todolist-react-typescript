@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { default as dayjs } from "dayjs";
 import { List, Grid, Typography } from "@material-ui/core";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import DateRangeIcon from "@material-ui/icons/DateRange";
 import TodoItem from "./TodoItem";
+import { TodoContext } from "../../contexts/TodoContext";
+
 const useStyles = makeStyles(() =>
   createStyles({
     todoListContainer: {
@@ -47,6 +49,9 @@ const TodoList: React.FunctionComponent = () => {
   /* Material-UI - classes */
   const classes = useStyles();
 
+  /* Context */
+  const { todos } = useContext(TodoContext);
+
   return (
     <Grid container className={classes.todoListContainer}>
       <Grid
@@ -70,7 +75,6 @@ const TodoList: React.FunctionComponent = () => {
       {/* /.todoListHeader */}
       <Grid container item className={classes.todoListContent}>
         <List className={classes.todoList}>
-          <TodoItem />
           <TodoItem />
         </List>
       </Grid>
