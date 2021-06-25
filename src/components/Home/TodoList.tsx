@@ -33,6 +33,9 @@ const useStyles = makeStyles(() =>
       marginLeft: "auto",
       marginRight: "auto",
     },
+    todosRemaining: {
+      color: "#fff",
+    },
     currentDate: {
       color: "#fff",
       paddingLeft: "1rem",
@@ -71,6 +74,20 @@ const TodoList: React.FunctionComponent = () => {
         <Grid container item alignContent="center" justify="flex-end" lg={6}>
           <DateRangeIcon className={classes.datePicker} fontSize="default" />
         </Grid>
+        {/* <Grid
+          container
+          item
+          alignContent="center"
+          justify="space-around"
+          lg={12}
+        >
+          <Typography className={classes.todosRemaining}>
+            Finished todos:
+          </Typography>
+          <Typography className={classes.todosRemaining}>
+            Unfinished todos:
+          </Typography>
+        </Grid> */}
       </Grid>
       {/* /.todoListHeader */}
       <Grid container item className={classes.todoListContent}>

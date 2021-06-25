@@ -7,6 +7,8 @@ interface Props {
 interface Context {
   todos: Todos[] | null;
   setTodos: (todos: Todos[]) => void;
+  moveUp: (todo: Todos) => void;
+  moveDown: (todo: Todos) => void;
 }
 
 type Todos = { title: string; when: string };
@@ -19,8 +21,46 @@ const TodoContextProvider = ({ children }: Props) => {
     { title: "Reading at home", when: "today at 10.00 am" },
   ]);
 
+  const moveUp = (todo: Todos) => {
+    // Find index of current todo item.
+    const todoIndex = todos?.indexOf(todo);
+
+    // Check if index of current todo is already "0".
+    if (todoIndex! < 1) {
+      return;
+    } else {
+      // Return new list of todos without current todo item.
+      let newList = todos?.filter((value) => value !== todo);
+
+      // Adds current todo item to new list with new index position.
+      newList?.splice(todoIndex! - 1, 0, todo);
+
+      // Update list of todos.
+      setTodos(newList!);
+    }
+  };
+
+  const moveDown = (todo: Todos) => {
+    // Find index of current todo item.
+    const todoIndex = todos?.indexOf(todo);
+
+    // Check if index of current todo is already "0".
+    if (todoIndex! > 0) {
+      return;
+    } else {
+      // Return new lsit of todos without current todo item.
+      let newList = todos?.filter((value) => value !== todo);
+
+      // Adds current todo item to new list with new index position.
+      newList?.splice(todoIndex! + 1, 0, todo);
+
+      // Update list of todos.
+      setTodos(newList!);
+    }
+  };
+
   /* Props */
-  const values: Context = { todos, setTodos };
+  const values: Context = { todos, setTodos, moveUp, moveDown };
 
   return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>;
 };
