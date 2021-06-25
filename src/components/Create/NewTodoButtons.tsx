@@ -2,6 +2,12 @@ import React from "react";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { Button, Grid } from "@material-ui/core";
 
+type newTodoT = { title: string; when: string };
+
+interface IProps {
+  setNewTodo: (newTodo: newTodoT) => void;
+}
+
 const useStyles = makeStyles(() =>
   createStyles({
     button: {
@@ -17,7 +23,7 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const NewTodoButtons: React.FunctionComponent = () => {
+const NewTodoButtons: React.FunctionComponent<IProps> = ({ setNewTodo }) => {
   /* Material-ui - classes */
   const classes = useStyles();
 
@@ -31,6 +37,9 @@ const NewTodoButtons: React.FunctionComponent = () => {
     >
       <Grid item className={classes.buttonWrapper}>
         <Button
+          onClick={() => {
+            setNewTodo({ title: "", when: "" });
+          }}
           type={"reset"}
           className={classes.button}
           variant="contained"

@@ -7,6 +7,8 @@ import ScheduleIcon from "@material-ui/icons/Schedule";
 import NewTodoButtons from "./NewTodoButtons";
 import { TodoContext } from "../../contexts/TodoContext";
 
+type NewTodoT = { title: string; when: string };
+
 const useStyles = makeStyles(() =>
   createStyles({
     form: {
@@ -27,14 +29,12 @@ const useStyles = makeStyles(() =>
   })
 );
 
-type INewTodo = { title: string; when: string };
-
 const NewTodoForm: React.FunctionComponent = () => {
   /* Material-ui - classes */
   const classes = useStyles();
 
   /* useState */
-  const [newTodo, setNewTodo] = useState<INewTodo>({
+  const [newTodo, setNewTodo] = useState<NewTodoT>({
     title: "",
     when: "",
   });
@@ -118,7 +118,7 @@ const NewTodoForm: React.FunctionComponent = () => {
         {/* /when */}
       </Grid>
       {/* /.inputFieldContainer */}
-      <NewTodoButtons />
+      <NewTodoButtons setNewTodo={setNewTodo} />
     </form>
   );
 };
