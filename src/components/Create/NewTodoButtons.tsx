@@ -5,6 +5,7 @@ import { Button, Grid } from "@material-ui/core";
 type newTodoT = { title: string; when: string };
 
 interface IProps {
+  newTodo: newTodoT;
   setNewTodo: (newTodo: newTodoT) => void;
 }
 
@@ -23,9 +24,14 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const NewTodoButtons: React.FunctionComponent<IProps> = ({ setNewTodo }) => {
+const NewTodoButtons: React.FunctionComponent<IProps> = ({
+  newTodo,
+  setNewTodo,
+}) => {
   /* Material-ui - classes */
   const classes = useStyles();
+
+  console.log("newTodo:", newTodo);
 
   return (
     <Grid

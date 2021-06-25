@@ -45,6 +45,9 @@ const NewTodoForm: React.FunctionComponent = () => {
   /* useHistory */
   const history = useHistory();
 
+  /* Props being passed down to child component. */
+  const props = { newTodo, setNewTodo };
+
   /* Handlers */
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     // Prevent default event.
@@ -118,7 +121,7 @@ const NewTodoForm: React.FunctionComponent = () => {
         {/* /when */}
       </Grid>
       {/* /.inputFieldContainer */}
-      <NewTodoButtons setNewTodo={setNewTodo} />
+      <NewTodoButtons {...props} />
     </form>
   );
 };
