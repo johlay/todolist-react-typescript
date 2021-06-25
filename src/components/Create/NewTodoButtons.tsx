@@ -31,8 +31,6 @@ const NewTodoButtons: React.FunctionComponent<IProps> = ({
   /* Material-ui - classes */
   const classes = useStyles();
 
-  console.log("newTodo:", newTodo);
-
   return (
     <Grid
       container
