@@ -30,12 +30,22 @@ const NewTodoButtons: React.FunctionComponent = () => {
       className={classes.buttonsContainer}
     >
       <Grid item className={classes.buttonWrapper}>
-        <Button className={classes.button} variant="contained" color="primary">
+        <Button
+          type={"reset"}
+          className={classes.button}
+          variant="contained"
+          color="primary"
+        >
           Reset
         </Button>
       </Grid>
       <Grid item className={classes.buttonWrapper}>
-        <Button className={classes.button} variant="contained" color="primary">
+        <Button
+          type={"submit"}
+          className={classes.button}
+          variant="contained"
+          color="primary"
+        >
           Create
         </Button>
       </Grid>

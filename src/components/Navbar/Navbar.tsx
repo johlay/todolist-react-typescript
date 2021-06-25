@@ -1,6 +1,7 @@
 import * as React from "react";
+import { NavLink } from "react-router-dom";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
-import { CardMedia, Grid, Link } from "@material-ui/core";
+import { CardMedia, Grid } from "@material-ui/core";
 import logo from "../../assets/logo/logo.png";
 
 const useStyles = makeStyles(() =>
@@ -11,6 +12,10 @@ const useStyles = makeStyles(() =>
     },
     navLink: {
       color: "#fff",
+      textDecoration: "none",
+    },
+    activeNavLink: {
+      textDecoration: "underline",
     },
     logo: {
       borderRadius: "2px",
@@ -34,9 +39,9 @@ const Navbar: React.FunctionComponent = () => {
         justify={"flex-start"}
         alignContent={"center"}
       >
-        <Link href="/">
+        <NavLink exact to="/">
           <CardMedia className={classes.logo} image={logo} />
-        </Link>
+        </NavLink>
       </Grid>
       {/* /.left_wrapper */}
       <Grid
@@ -47,17 +52,32 @@ const Navbar: React.FunctionComponent = () => {
         item
         md={3}
       >
-        <Link className={classes.navLink} href="/">
+        <NavLink
+          activeClassName={classes.activeNavLink}
+          className={classes.navLink}
+          exact
+          to="/"
+        >
           Start
-        </Link>
+        </NavLink>
 
-        <Link className={classes.navLink} href="/create">
+        <NavLink
+          activeClassName={classes.activeNavLink}
+          className={classes.navLink}
+          exact
+          to="/create"
+        >
           Create Todo
-        </Link>
+        </NavLink>
 
-        <Link className={classes.navLink} href="/about">
+        <NavLink
+          activeClassName={classes.activeNavLink}
+          className={classes.navLink}
+          exact
+          to="/about"
+        >
           About
-        </Link>
+        </NavLink>
       </Grid>
       {/* /.right_wrapper */}
     </Grid>

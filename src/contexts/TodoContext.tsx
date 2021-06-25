@@ -1,4 +1,4 @@
-import { createContext , useState, ReactNode } from "react";
+import { createContext, useEffect, useState, ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
@@ -24,10 +24,7 @@ const TodoContextProvider = ({ children }: Props) => {
 
   const create = (todo: Todos) => {
     // Create a copy of todo list.
-    let newList = todos?.map((value) => {
-      console.log("value:", value);
-      return value;
-    });
+    let newList = todos?.map((value) => value);
 
     // Add new todo item to at the start of todo list.
     newList?.unshift(todo);
