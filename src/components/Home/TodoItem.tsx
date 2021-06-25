@@ -44,16 +44,14 @@ const TodoItem: React.FunctionComponent<Props> = ({ todo }) => {
         <ListItemText primary={todo.title} secondary={todo.when}></ListItemText>
 
         <ListItemSecondaryAction>
-          <IconButton>
+          <IconButton onClick={() => moveUp(todo)}>
             <ArrowUpwardIcon
-              onClick={() => moveUp(todo)}
               className={classes.icon}
               aria-label="arrow upward"
             />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={() => moveDown(todo)}>
             <ArrowDownwardIcon
-              onClick={() => moveDown(todo)}
               className={classes.icon}
               aria-label="arrow downward"
             />

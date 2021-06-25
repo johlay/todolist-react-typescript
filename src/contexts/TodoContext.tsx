@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from "react";
+import { createContext , useState, ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
@@ -9,6 +9,7 @@ interface Context {
   setTodos: (todos: Todos[]) => void;
   moveUp: (todo: Todos) => void;
   moveDown: (todo: Todos) => void;
+  create: (todo: Todos) => void;
 }
 
 type Todos = { title: string; when: string };
@@ -20,6 +21,20 @@ const TodoContextProvider = ({ children }: Props) => {
     { title: "Daily meeting with teams", when: "today at 2.30 am" },
     { title: "Reading at home", when: "today at 10.00 am" },
   ]);
+
+  const create = (todo: Todos) => {
+    // Create a copy of todo list.
+    let newList = todos?.map((value) => {
+      console.log("value:", value);
+      return value;
+    });
+
+    // Add new todo item to at the start of todo list.
+    newList?.unshift(todo);
+
+    // Update list of todos.
+    setTodos(newList!);
+  };
 
   const moveUp = (todo: Todos) => {
     // Find index of current todo item.
@@ -60,7 +75,7 @@ const TodoContextProvider = ({ children }: Props) => {
   };
 
   /* Props */
-  const values: Context = { todos, setTodos, moveUp, moveDown };
+  const values: Context = { todos, setTodos, moveUp, moveDown, create };
 
   return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>;
 };

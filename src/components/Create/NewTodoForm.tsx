@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Input, InputLabel, InputAdornment, Grid } from "@material-ui/core";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import ListIcon from "@material-ui/icons/List";
 import ScheduleIcon from "@material-ui/icons/Schedule";
 import NewTodoButtons from "./NewTodoButtons";
+import { TodoContext } from "../../contexts/TodoContext";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -28,6 +29,9 @@ const useStyles = makeStyles(() =>
 const NewTodoForm: React.FunctionComponent = () => {
   /* Material-ui - classes */
   const classes = useStyles();
+
+  /* Context */
+  const { create } = useContext(TodoContext);
 
   return (
     <form className={classes.form} noValidate autoComplete="off">
